@@ -381,8 +381,13 @@
     if (!pdfDoc || pdfRendering) return
     pdfRendering = true
     pdfDoc.getPage(n).then((page) => {
+      const base = page.getViewport({ scale: 1 })
+      // 按查看器可用区域自适应 scale（完整显示 + 高清）
+      const availW = (pdfViewer.clientWidth || 800) - 40
+      const availH = (pdfViewer.clientHeight || 600) - 40
+      const scale = Math.min(Math.max(availW / base.width, availH / base.height, 1.2), 3)
+      const vp = page.getViewport({ scale })
       const ctx = pdfCanvas.getContext('2d')
-      const vp = page.getViewport({ scale: 1.4 })
       pdfCanvas.width = vp.width
       pdfCanvas.height = vp.height
       return page.render({ canvasContext: ctx, viewport: vp }).promise
