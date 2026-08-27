@@ -1467,12 +1467,51 @@ a.contact-row:hover {
 .pdf-modal-title { display: flex; align-items: center; gap: 10px; }
 .pdf-modal-title .star { color: var(--blue); font-size: 14px; }
 
-.pdf-modal-box iframe {
+/* PDF 翻页控件（黄色标题栏右侧） */
+.pdf-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+.pdf-nav-btn {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  border: 2px solid var(--black);
+  background: transparent;
+  color: var(--black);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, transform 0.2s;
+}
+.pdf-nav-btn:hover:not(:disabled) { background: var(--black); color: var(--yellow); transform: scale(1.08); }
+.pdf-nav-btn:disabled { opacity: 0.3; cursor: default; }
+.pdf-page-info {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--black);
+  min-width: 56px;
+  text-align: center;
+}
+
+/* PDF 阅读器（canvas 滚动区） */
+.pdf-viewer {
   width: 100%;
   height: calc(100% - 50px);   /* 减去标题栏高度 */
-  border: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: #1a1a24;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+.pdf-viewer canvas {
   display: block;
+  margin: 0 auto;
   background: var(--white);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
 /* 关闭按钮（黄色标题栏内） */

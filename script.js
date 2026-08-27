@@ -366,40 +366,77 @@
 
   /* ---------- PDF 预览弹窗 ---------- */
   const pdfModal = document.getElementById('pdfModal')
-  const pdfFrame = document.getElementById('pdfFrame')
   const pdfClose = document.getElementById('pdfModalClose')
   const pdfLoading = document.getElementById('pdfLoading')
-  if (pdfModal && pdfFrame) {
-    function openPdf(href) {
-      pdfLoading && pdfLoading.classList.add('is-loading')   // 显示加载提示
-      pdfFrame.src = href
-      pdfModal.classList.add('is-open')
-      pdfModal.setAttribute('aria-hidden', 'false')
-      document.dispatchEvent(new CustomEvent('menuopen')) // 锁背景滚动
-    }
-    function closePdf() {
-      pdfModal.classList.remove('is-open')
-      pdfModal.setAttribute('aria-hidden', 'true')
-      pdfFrame.src = ''
+  const pdfViewer = document.getElementById('pdfViewer')
+  const pdfCanvas = document.getElementById('pdfCanvas')
+  const pdfPrev = document.getElementById('pdfPrev')
+  const pdfNext = document.getElementById('pdfNext')
+  const pdfPageInfo = document.getElementById('pdfPageInfo')
+  let pdfDoc = null
+  let pdfPageNum = 1
+  let pdfRendering = false
+
+  function renderPdfPage(n) {
+    if (!pdfDoc || pdfRendering) return
+    pdfRendering = true
+    pdfDoc.getPage(n).then((page) => {
+      const ctx = pdfCanvas.getContext('2d')
+      const vp = page.getViewport({ scale: 1.4 })
+      pdfCanvas.width = vp.width
+      pdfCanvas.height = vp.height
+      return page.render({ canvasContext: ctx, viewport: vp }).promise
+    }).then(() => {
+      pdfPageNum = n
+      pdfPageInfo.textContent = n + ' / ' + pdfDoc.numPages
+      pdfPrev.disabled = n <= 1
+      pdfNext.disabled = n >= pdfDoc.numPages
+      pdfViewer.scrollTop = 0
+      pdfRendering = false
+    }).catch(() => { pdfRendering = false })
+  }
+
+  function openPdf(href) {
+    if (typeof pdfjsLib === 'undefined') return
+    pdfLoading && pdfLoading.classList.add('is-loading')
+    pdfModal.classList.add('is-open')
+    pdfModal.setAttribute('aria-hidden', 'false')
+    document.dispatchEvent(new CustomEvent('menuopen')) // 锁背景滚动
+    // 加载 PDF（worker 用本地 vendor）
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'vendor/pdf.worker.min.js'
+    pdfjsLib.getDocument({ url: href }).promise.then((doc) => {
+      pdfDoc = doc
+      renderPdfPage(1)
       pdfLoading && pdfLoading.classList.remove('is-loading')
-      document.dispatchEvent(new CustomEvent('menuclose'))
-    }
-    // PDF 加载完成 → 隐藏加载提示
-    if (pdfLoading) pdfFrame.addEventListener('load', () => pdfLoading.classList.remove('is-loading'))
-    document.querySelectorAll('[data-pdf-preview]').forEach((a) => {
-      a.addEventListener('click', (e) => {
-        e.preventDefault()
-        openPdf(a.getAttribute('href'))
-      })
-    })
-    if (pdfClose) pdfClose.addEventListener('click', closePdf)
-    pdfModal.addEventListener('click', (e) => {
-      if (e.target === pdfModal) closePdf()
-    })
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closePdf()
+    }).catch(() => {
+      pdfLoading && pdfLoading.classList.remove('is-loading')
+      if (pdfViewer) pdfViewer.innerHTML = '<p style="color:#fff;padding:40px;text-align:center">PDF 加载失败，请稍后重试</p>'
     })
   }
+  function closePdf() {
+    pdfModal.classList.remove('is-open')
+    pdfModal.setAttribute('aria-hidden', 'true')
+    pdfLoading && pdfLoading.classList.remove('is-loading')
+    if (pdfDoc) { pdfDoc.destroy(); pdfDoc = null }
+    document.dispatchEvent(new CustomEvent('menuclose'))
+  }
+  document.querySelectorAll('[data-pdf-preview]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault()
+      openPdf(a.getAttribute('href'))
+    })
+  })
+  if (pdfClose) pdfClose.addEventListener('click', closePdf)
+  if (pdfPrev) pdfPrev.addEventListener('click', () => renderPdfPage(pdfPageNum - 1))
+  if (pdfNext) pdfNext.addEventListener('click', () => renderPdfPage(pdfPageNum + 1))
+  pdfModal.addEventListener('click', (e) => {
+    if (e.target === pdfModal) closePdf()
+  })
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && pdfModal.classList.contains('is-open')) closePdf()
+    if (e.key === 'ArrowLeft' && pdfModal.classList.contains('is-open')) renderPdfPage(pdfPageNum - 1)
+    if (e.key === 'ArrowRight' && pdfModal.classList.contains('is-open')) renderPdfPage(pdfPageNum + 1)
+  })
 
   /* ---------- SpecularButton：圆角边框 + 鼠标跟随光扫（原生 canvas 版） ---------- */
   class SpecularButton {

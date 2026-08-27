@@ -256,18 +256,25 @@
 
   <div class="cursor" id="cursor"><span>VIEW</span></div>
 
-  <!-- PDF 预览弹窗 -->
+  <!-- PDF 预览弹窗（PDF.js 页面内渲染） -->
   <div class="pdf-modal" id="pdfModal" aria-hidden="true">
     <div class="pdf-modal-box">
       <div class="pdf-modal-head">
         <span class="pdf-modal-title">OPERATIONS CASE <span class="star">✱</span> 运营案例</span>
+        <div class="pdf-nav">
+          <button class="pdf-nav-btn" id="pdfPrev" aria-label="上一页" data-cursor="view">‹</button>
+          <span class="pdf-page-info" id="pdfPageInfo">1 / 1</span>
+          <button class="pdf-nav-btn" id="pdfNext" aria-label="下一页" data-cursor="view">›</button>
+        </div>
         <button class="pdf-modal-close" id="pdfModalClose" aria-label="关闭预览" data-cursor="view">✕</button>
       </div>
       <div class="pdf-loading" id="pdfLoading">
         <span class="pdf-loading-spinner"></span>
         <p>正在加载案例文档…</p>
       </div>
-      <iframe id="pdfFrame" src="" title="运营案例 PDF"></iframe>
+      <div class="pdf-viewer" id="pdfViewer">
+        <canvas id="pdfCanvas"></canvas>
+      </div>
     </div>
   </div>
 
@@ -425,6 +432,7 @@
   <script src="vendor/gsap.min.js"></script>
   <script src="vendor/ScrollTrigger.min.js"></script>
   <script src="vendor/lenis.min.js"></script>
-  <script src="script.js?v=20260827-1730"></script>
+  <script src="vendor/pdf.min.js"></script>
+  <script src="script.js?v=20260827-1745"></script>
 </body>
 </html>
