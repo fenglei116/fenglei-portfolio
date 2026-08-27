@@ -397,20 +397,31 @@
   }
 
   function openPdf(href) {
-    if (typeof pdfjsLib === 'undefined') return
+    if (typeof pdfjsLib === 'undefined') {
+      pdfViewer && (pdfViewer.innerHTML = '<p style="color:#fff;padding:40px;text-align:center">PDF.js 未加载，请刷新页面重试</p>')
+      pdfLoading && pdfLoading.classList.remove('is-loading')
+      pdfModal.classList.add('is-open')
+      return
+    }
     pdfLoading && pdfLoading.classList.add('is-loading')
     pdfModal.classList.add('is-open')
     pdfModal.setAttribute('aria-hidden', 'false')
     document.dispatchEvent(new CustomEvent('menuopen')) // 锁背景滚动
     // 加载 PDF（worker 用本地 vendor）
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'vendor/pdf.worker.min.js'
-    pdfjsLib.getDocument({ url: href }).promise.then((doc) => {
+    const task = pdfjsLib.getDocument({ url: href, withCredentials: false })
+    task.promise.then((doc) => {
       pdfDoc = doc
       renderPdfPage(1)
       pdfLoading && pdfLoading.classList.remove('is-loading')
-    }).catch(() => {
+    }, (err) => {
+      console.error('PDF load failed:', err)
       pdfLoading && pdfLoading.classList.remove('is-loading')
-      if (pdfViewer) pdfViewer.innerHTML = '<p style="color:#fff;padding:40px;text-align:center">PDF 加载失败，请稍后重试</p>'
+      pdfViewer && (pdfViewer.innerHTML = 
+        '<p style="color:#fff;padding:40px;text-align:center;font-size:14px">PDF 加载失败: ' + (err && err.message || err) + 
+        '<br/><br/><a href="' + href + '" target="_blank" style="color:#FED931">点此下载 PDF 查看</a></p>')
+    }).catch((err) => {
+      console.error('PDF unexpected error:', err)
     })
   }
   function closePdf() {
