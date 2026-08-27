@@ -1497,7 +1497,7 @@ a.contact-row:hover {
   text-align: center;
 }
 
-/* PDF 阅读器（canvas 滚动区） */
+/* PDF 阅读器（页面 WebP 图片，自适应宽） */
 .pdf-viewer {
   width: 100%;
   height: calc(100% - 50px);   /* 减去标题栏高度 */
@@ -1507,8 +1507,10 @@ a.contact-row:hover {
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
 }
-.pdf-viewer canvas {
+.pdf-viewer img {
   display: block;
+  width: 100%;
+  height: auto;
   margin: 0 auto;
   background: var(--white);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
