@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="700" viewBox="0 0 600 700">
+  <rect width="600" height="700" fill="#0a0a0a"/>
+  <circle cx="300" cy="350" r="192" fill="#fed931"/>
+  <circle cx="300" cy="350" r="105.60000000000001" fill="#222"/>
+  <text x="300" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="60" fill="#ffffff">PROJECT 03</text>
+  <text x="300" y="384" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="18" letter-spacing="5" fill="#ffffff">BRANDING</text>
+  <text x="28" y="674" font-family="Arial, sans-serif" font-weight="900" font-size="20" fill="#ffffff">✱ FENGLEI PORTFOLIO</text>
+</svg>

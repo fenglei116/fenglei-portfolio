@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="640" viewBox="0 0 520 640">
+  <rect width="520" height="640" fill="#fed931"/>
+  <circle cx="260" cy="230" r="108" fill="#0a0a0a"/>
+  <circle cx="228" cy="205" r="14" fill="#ffffff"/>
+  <circle cx="292" cy="205" r="14" fill="#ffffff"/>
+  <path d="M222 268 q38 26 76 0" stroke="#ffffff" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <rect x="170" y="360" width="180" height="180" rx="18" fill="#0a0a0a"/>
+  <path d="M140 540 L240 540 L200 620 L140 620 Z" fill="#3add8a"/>
+  <path d="M285 420 l90 -40 l26 28 l-84 52 Z" fill="#ffffff"/>
+  <circle cx="395" cy="408" r="26" fill="#ffffff"/>
+  <circle cx="395" cy="408" r="10" fill="#0a0a0a"/>
+  <text x="260" y="44" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="30" letter-spacing="6" fill="#0a0a0a">HELLO</text>
+  <text x="260" y="618" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="22" letter-spacing="4" fill="#0a0a0a">✱ FENGLEI ✱</text>
+</svg>

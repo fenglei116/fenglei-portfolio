@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FENGLEI® — Visual & Experience Designer</title>
+  <meta name="description" content="FengLei — 视觉设计 / 体验设计方向在校生。专注界面与视觉设计实践。" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============ 辅助 UI ============ -->
+  <div class="progress-bar"></div>
+
+  <header class="site-header" id="siteHeader">
+    <a href="#hero" class="logo-pill">FENGLEI<span class="logo-dot">®</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="打开菜单" data-cursor="view">
+      <span class="menu-btn-lines">
+        <span class="menu-btn-line"></span>
+        <span class="menu-btn-line"></span>
+        <span class="menu-btn-line"></span>
+      </span>
+      <span class="menu-btn-text">menu</span>
+    </button>
+  </header>
+
+  <nav class="fullscreen-menu" id="fullscreenMenu" aria-hidden="true">
+    <ul class="menu-list">
+      <li><a href="#hero" class="menu-link" data-num="01"><span class="pill-clip"><span class="hover-circle" aria-hidden="true"></span></span><span class="label-stack"><span class="pill-label">Home</span><span class="pill-label-hover">首页</span></span></a></li>
+      <li><a href="#bigger" class="menu-link" data-num="02"><span class="pill-clip"><span class="hover-circle" aria-hidden="true"></span></span><span class="label-stack"><span class="pill-label">Vision</span><span class="pill-label-hover">视觉先行</span></span></a></li>
+      <li><a href="#bolder" class="menu-link" data-num="03"><span class="pill-clip"><span class="hover-circle" aria-hidden="true"></span></span><span class="label-stack"><span class="pill-label">Empathy</span><span class="pill-label-hover">体验共情</span></span></a></li>
+      <li><a href="#better" class="menu-link" data-num="04"><span class="pill-clip"><span class="hover-circle" aria-hidden="true"></span></span><span class="label-stack"><span class="pill-label">Motion</span><span class="pill-label-hover">让作品动起来</span></span></a></li>
+      <li><a href="#about" class="menu-link" data-num="05"><span class="pill-clip"><span class="hover-circle" aria-hidden="true"></span></span><span class="label-stack"><span class="pill-label">About</span><span class="pill-label-hover">关于我</span></span></a></li>
+      <li><a href="#works" class="menu-link" data-num="06"><span class="pill-clip"><span class="hover-circle" aria-hidden="true"></span></span><span class="label-stack"><span class="pill-label">Works</span><span class="pill-label-hover">作品集</span></span></a></li>
+      <li><a href="#footer" class="menu-link" data-num="07"><span class="pill-clip"><span class="hover-circle" aria-hidden="true"></span></span><span class="label-stack"><span class="pill-label">Contact</span><span class="pill-label-hover">联系我</span></span></a></li>
+    </ul>
+    <div class="menu-footer">
+      <span>EMAIL ME AT</span>
+      <a href="mailto:13936916802@163.com">13936916802@163.com</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ============ Section 1 · Hero Pin（IP 居中固定 + 文字流右移 + 黑圆点接管） ============ -->
+    <section class="hero-pin" id="hero">
+      <div class="hero-stage">
+        <div class="hero-meta">
+          <span class="hero-w">w.</span>
+          <span class="main-title">I AM FENGLEI</span>
+        </div>
+
+        <!-- IP 角色（两张图 cross-fade 切换姿态，始终在中央固定位置） -->
+        <div class="ip-center" data-ip>
+          <img src="assets/ip.png" alt="FengLei IP" class="ip-img ip-a is-active" data-ip-a />
+          <img src="assets/ip-b.png" alt="FengLei IP 挥手版" class="ip-img ip-b" data-ip-b />
+        </div>
+
+        <!-- 巨大字母流（水平方向往右移动） -->
+        <div class="text-stream" data-stream>
+          <div class="text-track">
+            <span>DARE</span><span class="stream-dot">●</span>
+            <span>TO</span><span class="stream-dot">●</span>
+            <span>GO</span><span class="stream-dot">●</span>
+            <span>BOLDER</span><span class="stream-dot">●</span>
+            <span>BIGGER</span><span class="stream-dot">●</span>
+            <span>BETTER</span><span class="stream-dot">●</span>
+            <span>DARE</span><span class="stream-dot">●</span>
+            <span>TO</span><span class="stream-dot">●</span>
+            <span>GO</span><span class="stream-dot">●</span>
+            <span>BOLDER</span><span class="stream-dot">●</span>
+            <span>BIGGER</span><span class="stream-dot">●</span>
+            <span>BETTER</span><span class="stream-dot">●</span>
+          </div>
+        </div>
+
+        <!-- 接管黑圆点（纯黑圆，右侧位置，scale 0→40 占据全屏 → 缩回标点） -->
+        <div class="takeover-dot" data-takeover aria-hidden="true"></div>
+      </div>
+
+      <div class="hero-tagline" data-marquee-fade>
+        WE ARE A <b>"DESIGNER"</b> CRAFTING VISUAL EXPERIENCES FOR HOOMANS
+      </div>
+    </section>
+
+    <!-- ============ Section 2-4 · BIGGER / BOLDER / BETTER 卡片堆叠 ============ -->
+    <!-- 3 张卡包在 .stage-wrap（300vh）里，sticky 只在容器内生效，
+         容器滚完后 sticky 解除，后面的 About/Marquee/Skills 正常显示 -->
+    <div class="stage-wrap">
+      <section class="stage" id="bigger">
+        <div class="stage-content">
+          <h2 class="stage-title">VISION</h2>
+          <p class="stage-desc">视觉先行 · Vision first.<br/>让每一个想法都被看见，用设计让品牌有记忆点、有温度、有辨识度。</p>
+        </div>
+      </section>
+
+      <section class="stage" id="bolder">
+        <div class="stage-content">
+          <h2 class="stage-title">EMPATHY</h2>
+          <p class="stage-desc">体验共情 · Empathy led.<br/>以用户为中心做设计，让每一次点击、滑动、停留都自然顺滑。</p>
+        </div>
+      </section>
+
+      <section class="stage" id="better">
+        <div class="stage-content">
+          <h2 class="stage-title">MOTION</h2>
+          <p class="stage-desc">让作品动起来 · Motion & AI.<br/>用 AI 辅助编码与动效，把想法快速变成能跑起来的作品。</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============ Section 5 · ABOUT（白底 + 英文大标题 + 中文名字/段落） ============ -->
+    <section class="about-page" id="about">
+      <div class="about-page-inner">
+        <h2 class="about-page-title reveal-text">
+          <span class="line">I MAKE IDEAS</span>
+          <span class="line">STAND OUT <span class="italicBold">IN A</span></span>
+          <span class="line"><span class="hyphen"></span>LOUD WORLD.</span>
+        </h2>
+
+        <div class="about-page-body">
+          <div class="about-page-ip">
+            <img src="assets/portrait.jpg" alt="冯雷 弹吉他" class="about-page-img" />
+          </div>
+          <div class="about-page-copy">
+            <h3 class="about-page-h3">我是 <span class="italicBold">冯雷</span> / FENGLEI</h3>
+            <p class="about-page-text">
+              就读于哈尔滨师范大学，数字媒体艺术设计方向在校生，目前学习视觉设计 / 体验设计方向中。
+            </p>
+            <p class="about-page-text">
+              拥有一套项目改版设计，一套运营活动设计。
+            </p>
+            <a href="#footer" class="button-interactive" data-cursor="view" data-scroll-to-footer data-specular>
+              LET'S TALK
+              <span class="btn-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Section 6 · 静态标语 ============ -->
+    <section class="tagline-band">
+      <p class="tagline-band-en">I DESIGN DIGITAL EXPERIENCES THAT MAKE PEOPLE <b>FEEL SOMETHING</b></p>
+      <p class="tagline-band-cn">视觉设计 / 体验设计方向在校生 · 让想法在喧闹的世界里被看见</p>
+    </section>
+
+    <!-- ============ Section 7 · 个人作品集（提到 skills 之前） ============ -->
+    <section class="works" id="works">
+      <div class="works-head">
+        <p class="works-sub works-sub-main">个人作品集 <span class="works-sub-divider">/</span> PERSONAL WORK</p>
+      </div>
+
+      <div class="works-grid">
+        <a href="assets/project-1-case.pdf" class="work-card" data-cursor="view" data-pdf-preview>
+          <figure>
+            <img src="assets/project-1.jpg" alt="PROJECT 01" loading="lazy" />
+            <figcaption>
+              <span class="work-cat">VISUAL</span>
+              <h3 class="work-name">PROJECT 01</h3>
+            </figcaption>
+          </figure>
+        </a>
+        <a href="assets/project-2-case.pdf" class="work-card" data-cursor="view" data-pdf-preview>
+          <figure>
+            <img src="assets/project-2.jpg" alt="PROJECT 02" loading="lazy" />
+            <figcaption>
+              <span class="work-cat">UI</span>
+              <h3 class="work-name">PROJECT 02</h3>
+            </figcaption>
+          </figure>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ Section 8 · Skills Accordion（移到 works 之后） ============ -->
+    <section class="skills" id="skills">
+      <div class="skills-head">
+        <h2 class="skills-title reveal-text">
+          <span class="line">MY</span>
+          <span class="line">SKILLS<span class="hyphen"></span>SET</span>
+        </h2>
+        <p class="skills-note">HOVER TO EXPAND</p>
+      </div>
+
+      <div class="skills-list">
+        <article class="service-item" data-drift-link data-drift-items="frame-1.png,frame-2.png,frame-3.png,frame-4.png,frame-5.png,frame-6.png,frame-7.png,frame-8.png">
+          <h3 class="service-title">UI DESIGN</h3>
+          <p class="service-desc">Interfaces and component systems, polished down to every interaction detail.</p>
+          <span class="service-thumb" aria-hidden="true" style="--tone:#25DC97">UI</span>
+        </article>
+        <article class="service-item" data-drift-link data-drift-source="ux">
+          <h3 class="service-title">UX DESIGN</h3>
+          <p class="service-desc">Responsive pages and creative layouts — the browsing itself becomes the experience.</p>
+          <span class="service-thumb" aria-hidden="true" style="--tone:#2D7BF8">UX</span>
+        </article>
+        <article class="service-item" data-drift-link data-drift-source="vibe">
+          <h3 class="service-title">VIBE CODING</h3>
+          <p class="service-desc">Turn ideas into working products fast with AI-assisted coding.</p>
+          <span class="service-thumb" aria-hidden="true" style="--tone:#2D7BF8">VC</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ Section 8 · 掌握的工具（LogoLoop 横向循环 + fade + hover） ============ -->
+    <section class="clients" id="clients">
+      <p class="clients-label">掌握的工具 / TOOLS I USE</p>
+      <div class="clients-row logoloop logoloop--fade" data-marquee>
+        <div class="clients-track">
+          <span class="client-logo"><img src="assets/tool-1.png" alt="Figma" /></span>
+          <span class="client-logo"><img src="assets/tool-2.png" alt="Adobe Illustrator" /></span>
+          <span class="client-logo"><img src="assets/tool-3.png" alt="Adobe Photoshop" /></span>
+          <span class="client-logo"><img src="assets/tool-4.png" alt="Adobe XD" /></span>
+          <span class="client-logo"><img src="assets/tool-5.png" alt="VS Code" /></span>
+          <span class="client-logo"><img src="assets/tool-6.png" alt="ChatGPT" /></span>
+          <span class="client-logo"><img src="assets/tool-7.png" alt="UI 设计" /></span>
+          <span class="client-logo"><img src="assets/tool-8.png" alt="Webflow" /></span>
+          <span class="client-logo"><img src="assets/tool-9.png" alt="OpenAI" /></span>
+          <span class="client-logo"><img src="assets/tool-10.png" alt="AI Cloud" /></span>
+          <span class="client-logo"><img src="assets/tool-11.png" alt="设计工具" /></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Section 10 · Big Footer ============ -->
+    <footer class="big-footer" id="footer">
+      <div class="footer-top">
+        <span class="main-title">Start a project</span>
+      </div>
+
+      <h2 class="footer-title">
+        <span class="footer-line">SAY <span class="italicBold">HI</span></span>
+        <span class="footer-line"><span class="hyphen"></span>LET'S TALK</span>
+      </h2>
+
+      <div class="footer-cta-row">
+        <img src="assets/ip-b.png" alt="" class="footer-hand footer-hand-left" aria-hidden="true" />
+        <a href="#" class="footer-cta" data-cursor="view" data-contact-link>
+          <span class="cta-inner">GO</span>
+        </a>
+        <img src="assets/rabbit.png" alt="" class="footer-hand footer-hand-right" aria-hidden="true" />
+      </div>
+
+      <div class="footer-reveal" aria-hidden="true"></div>
+
+      <div class="footer-contact">
+        <a href="mailto:13936916802@163.com">EMAIL ME AT 13936916802@163.COM</a>
+        <span class="footer-contact-sep">✱</span>
+        <a href="tel:+8618746660218">SAY HI AT +86 187 4666 0218</a>
+      </div>
+
+      <p class="footer-copy">© 2026 FENGLEI. ALL RIGHTS RESERVED</p>
+    </footer>
+  </main>
+
+  <div class="cursor" id="cursor"><span>VIEW</span></div>
+
+  <!-- PDF 预览弹窗 -->
+  <div class="pdf-modal" id="pdfModal" aria-hidden="true">
+    <div class="pdf-modal-box">
+      <div class="pdf-modal-head">
+        <span class="pdf-modal-title">OPERATIONS CASE <span class="star">✱</span> 运营案例</span>
+        <button class="pdf-modal-close" id="pdfModalClose" aria-label="关闭预览" data-cursor="view">✕</button>
+      </div>
+      <iframe id="pdfFrame" src="" title="运营案例 PDF"></iframe>
+    </div>
+  </div>
+
+  <!-- Contact 弹窗（Footer GO → 联系方式 + 微信二维码） -->
+  <div class="contact-modal" id="contactModal" aria-hidden="true">
+    <div class="contact-lightrays" id="contactLightRays"></div>
+    <button class="contact-modal-close" id="contactModalClose" aria-label="关闭" data-cursor="view">✕</button>
+    <div class="contact-card">
+      <span class="contact-deco contact-deco--star" aria-hidden="true">✱</span>
+      <span class="contact-deco contact-deco--ring" aria-hidden="true"></span>
+      <div class="contact-head">
+        <span class="contact-head-dot" aria-hidden="true"></span>
+        <h3 class="contact-title">LET'S TALK <span class="star">✱</span> 联系我</h3>
+        <span class="contact-head-dot" aria-hidden="true"></span>
+      </div>
+      <div class="contact-qr">
+        <div class="contact-qr-ring">
+          <img src="assets/wechat-qr.jpg" alt="微信二维码" />
+        </div>
+        <p class="contact-qr-tip">✱ 扫一扫加微信 ✱</p>
+      </div>
+      <div class="contact-info">
+        <a href="tel:+8618746660218" class="contact-row pill-nav-row" data-cursor="view">
+          <span class="pill-clip"><span class="hover-circle" aria-hidden="true"></span></span>
+          <span class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span class="label-stack">
+            <span class="pill-label">PHONE</span>
+            <span class="pill-label-hover">CALL ME</span>
+          </span>
+          <span class="label-stack">
+            <span class="pill-label">+86 187 4666 0218</span>
+            <span class="pill-label-hover">+86 187 4666 0218</span>
+          </span>
+        </a>
+        <a href="mailto:13936916802@163.com" class="contact-row pill-nav-row" data-cursor="view">
+          <span class="pill-clip"><span class="hover-circle" aria-hidden="true"></span></span>
+          <span class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+          </span>
+          <span class="label-stack">
+            <span class="pill-label">EMAIL</span>
+            <span class="pill-label-hover">WRITE ME</span>
+          </span>
+          <span class="label-stack">
+            <span class="pill-label">13936916802@163.com</span>
+            <span class="pill-label-hover">13936916802@163.com</span>
+          </span>
+        </a>
+        <div class="contact-row">
+          <span class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </span>
+          <span class="contact-label">WECHAT</span>
+          <span class="contact-value">扫码加微信 ↑</span>
+        </div>
+      </div>
+      <p class="contact-footer-note">LET'S CREATE SOMETHING GREAT ✱ 期待与你合作</p>
+      <img src="assets/ip-b.png" alt="" class="contact-ip contact-ip--left" aria-hidden="true" />
+      <img src="assets/rabbit.png" alt="" class="contact-ip contact-ip--right" aria-hidden="true" />
+    </div>
+  </div>
+
+  <!-- 大图 Lightbox（DriftWall 图片点击查看大图 · 画廊风格） -->
+  <div class="lightbox-modal" id="lightboxModal" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="关闭" data-cursor="view">✕</button>
+    <figure class="lightbox-stage" id="lightboxStage">
+      <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+      <figcaption class="lightbox-caption" id="lightboxCaption"></figcaption>
+    </figure>
+  </div>
+
+  <!-- DriftWall 弹窗（UI DESIGN 详情 · 静态 9 列 + JS 接管滚动） -->
+  <div class="drift-modal" id="driftModal" aria-hidden="true">
+    <button class="drift-modal-close" id="driftModalClose" aria-label="关闭预览" data-cursor="view">✕</button>
+    <div class="drift-wall" id="driftWall">
+      <div class="drift-wall__plane" id="driftPlane">
+        <div class="drift-wall__col" style="--c-depth:-120px">
+          <div class="drift-wall__track">
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-1.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-2.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-3.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-8.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+          </div>
+        </div>
+        <div class="drift-wall__col" style="--c-depth:72px">
+          <div class="drift-wall__track">
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-4.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-5.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-6.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-7.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+          </div>
+        </div>
+        <div class="drift-wall__col" style="--c-depth:-100px">
+          <div class="drift-wall__track">
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-2.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-6.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-1.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-5.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+          </div>
+        </div>
+        <div class="drift-wall__col" style="--c-depth:60px">
+          <div class="drift-wall__track">
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-3.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-7.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-4.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-8.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+          </div>
+        </div>
+        <div class="drift-wall__col" style="--c-depth:-80px">
+          <div class="drift-wall__track">
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-5.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-1.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-6.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-2.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+          </div>
+        </div>
+        <div class="drift-wall__col" style="--c-depth:-60px">
+          <div class="drift-wall__track">
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-4.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-1.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-7.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-3.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+          </div>
+        </div>
+        <div class="drift-wall__col" style="--c-depth:40px">
+          <div class="drift-wall__track">
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-2.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-8.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-5.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-6.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+          </div>
+        </div>
+        <div class="drift-wall__col" style="--c-depth:-50px">
+          <div class="drift-wall__track">
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-7.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-3.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-1.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-6.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+          </div>
+        </div>
+        <div class="drift-wall__col" style="--c-depth:35px">
+          <div class="drift-wall__track">
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-4.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-8.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-2.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+            <a class="drift-wall__tile"><span class="drift-wall__inner"><img src="assets/ui/frame-5.png" alt="" loading="lazy" /><span class="drift-wall__overlay"></span></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="vendor/lenis.min.js"></script>
+  <script src="script.js?v=20260827-1602"></script>
+</body>
+</html>
