@@ -53,8 +53,8 @@
 
         <!-- IP 角色（两张图 cross-fade 切换姿态，始终在中央固定位置） -->
         <div class="ip-center" data-ip>
-          <img src="assets/ip.png" alt="FengLei IP" class="ip-img ip-a is-active" data-ip-a />
-          <img src="assets/ip-b.png" alt="FengLei IP 挥手版" class="ip-img ip-b" data-ip-b />
+          <img src="assets/ip.webp" alt="FengLei IP" class="ip-img ip-a is-active" data-ip-a />
+          <img src="assets/ip-b.webp" alt="FengLei IP 挥手版" class="ip-img ip-b" data-ip-b />
         </div>
 
         <!-- 巨大字母流（水平方向往右移动） -->
@@ -121,7 +121,7 @@
 
         <div class="about-page-body">
           <div class="about-page-ip">
-            <img src="assets/portrait.jpg" alt="冯雷 弹吉他" class="about-page-img" />
+            <img src="assets/portrait.webp" alt="冯雷 弹吉他" class="about-page-img"  loading="lazy"/>
           </div>
           <div class="about-page-copy">
             <h3 class="about-page-h3">我是 <span class="italicBold">冯雷</span> / FENGLEI</h3>
@@ -155,7 +155,7 @@
       <div class="works-grid">
         <a href="assets/project-1-case.pdf" class="work-card" data-cursor="view" data-pdf-preview>
           <figure>
-            <img src="assets/project-1.jpg" alt="PROJECT 01" loading="lazy" />
+            <img src="assets/project-1.webp" alt="PROJECT 01" loading="lazy" />
             <figcaption>
               <span class="work-cat">VISUAL</span>
               <h3 class="work-name">PROJECT 01</h3>
@@ -164,7 +164,7 @@
         </a>
         <a href="assets/project-2-case.pdf" class="work-card" data-cursor="view" data-pdf-preview>
           <figure>
-            <img src="assets/project-2.jpg" alt="PROJECT 02" loading="lazy" />
+            <img src="assets/project-2.webp" alt="PROJECT 02" loading="lazy" />
             <figcaption>
               <span class="work-cat">UI</span>
               <h3 class="work-name">PROJECT 02</h3>
@@ -208,17 +208,17 @@
       <p class="clients-label">掌握的工具 / TOOLS I USE</p>
       <div class="clients-row logoloop logoloop--fade" data-marquee>
         <div class="clients-track">
-          <span class="client-logo"><img src="assets/tool-1.png" alt="Figma" /></span>
-          <span class="client-logo"><img src="assets/tool-2.png" alt="Adobe Illustrator" /></span>
-          <span class="client-logo"><img src="assets/tool-3.png" alt="Adobe Photoshop" /></span>
-          <span class="client-logo"><img src="assets/tool-4.png" alt="Adobe XD" /></span>
-          <span class="client-logo"><img src="assets/tool-5.png" alt="VS Code" /></span>
-          <span class="client-logo"><img src="assets/tool-6.png" alt="ChatGPT" /></span>
-          <span class="client-logo"><img src="assets/tool-7.png" alt="UI 设计" /></span>
-          <span class="client-logo"><img src="assets/tool-8.png" alt="Webflow" /></span>
-          <span class="client-logo"><img src="assets/tool-9.png" alt="OpenAI" /></span>
-          <span class="client-logo"><img src="assets/tool-10.png" alt="AI Cloud" /></span>
-          <span class="client-logo"><img src="assets/tool-11.png" alt="设计工具" /></span>
+          <span class="client-logo"><img src="assets/tool-1.png" alt="Figma"  loading="lazy"/></span>
+          <span class="client-logo"><img src="assets/tool-2.png" alt="Adobe Illustrator"  loading="lazy"/></span>
+          <span class="client-logo"><img src="assets/tool-3.png" alt="Adobe Photoshop"  loading="lazy"/></span>
+          <span class="client-logo"><img src="assets/tool-4.png" alt="Adobe XD"  loading="lazy"/></span>
+          <span class="client-logo"><img src="assets/tool-5.png" alt="VS Code"  loading="lazy"/></span>
+          <span class="client-logo"><img src="assets/tool-6.png" alt="ChatGPT"  loading="lazy"/></span>
+          <span class="client-logo"><img src="assets/tool-7.png" alt="UI 设计"  loading="lazy"/></span>
+          <span class="client-logo"><img src="assets/tool-8.png" alt="Webflow"  loading="lazy"/></span>
+          <span class="client-logo"><img src="assets/tool-9.png" alt="OpenAI"  loading="lazy"/></span>
+          <span class="client-logo"><img src="assets/tool-10.png" alt="AI Cloud"  loading="lazy"/></span>
+          <span class="client-logo"><img src="assets/tool-11.png" alt="设计工具"  loading="lazy"/></span>
         </div>
       </div>
     </section>
@@ -235,11 +235,11 @@
       </h2>
 
       <div class="footer-cta-row">
-        <img src="assets/ip-b.png" alt="" class="footer-hand footer-hand-left" aria-hidden="true" />
+        <img src="assets/ip-b.webp" alt="" class="footer-hand footer-hand-left" aria-hidden="true" />
         <a href="#" class="footer-cta" data-cursor="view" data-contact-link>
           <span class="cta-inner">GO</span>
         </a>
-        <img src="assets/rabbit.png" alt="" class="footer-hand footer-hand-right" aria-hidden="true" />
+        <img src="assets/rabbit.webp" alt="" class="footer-hand footer-hand-right" aria-hidden="true" />
       </div>
 
       <div class="footer-reveal" aria-hidden="true"></div>
@@ -262,6 +262,10 @@
       <div class="pdf-modal-head">
         <span class="pdf-modal-title">OPERATIONS CASE <span class="star">✱</span> 运营案例</span>
         <button class="pdf-modal-close" id="pdfModalClose" aria-label="关闭预览" data-cursor="view">✕</button>
+      </div>
+      <div class="pdf-loading" id="pdfLoading">
+        <span class="pdf-loading-spinner"></span>
+        <p>正在加载案例文档…</p>
       </div>
       <iframe id="pdfFrame" src="" title="运营案例 PDF"></iframe>
     </div>
@@ -323,8 +327,8 @@
         </div>
       </div>
       <p class="contact-footer-note">LET'S CREATE SOMETHING GREAT ✱ 期待与你合作</p>
-      <img src="assets/ip-b.png" alt="" class="contact-ip contact-ip--left" aria-hidden="true" />
-      <img src="assets/rabbit.png" alt="" class="contact-ip contact-ip--right" aria-hidden="true" />
+      <img src="assets/ip-b.webp" alt="" class="contact-ip contact-ip--left" aria-hidden="true" />
+      <img src="assets/rabbit.webp" alt="" class="contact-ip contact-ip--right" aria-hidden="true" />
     </div>
   </div>
 
@@ -421,6 +425,6 @@
   <script src="vendor/gsap.min.js"></script>
   <script src="vendor/ScrollTrigger.min.js"></script>
   <script src="vendor/lenis.min.js"></script>
-  <script src="script.js?v=20260827-1602"></script>
+  <script src="script.js?v=20260827-1730"></script>
 </body>
 </html>

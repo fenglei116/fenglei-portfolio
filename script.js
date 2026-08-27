@@ -106,20 +106,20 @@
   if (driftModal && driftWall) {
     const driftItems = {
       ui: [
-        'assets/ui/frame-1.png','assets/ui/frame-2.png','assets/ui/frame-3.png','assets/ui/frame-4.png',
-        'assets/ui/frame-5.png','assets/ui/frame-6.png','assets/ui/frame-7.png','assets/ui/frame-8.png',
-        'assets/ui/frame-9.png','assets/ui/frame-10.png','assets/ui/frame-11.png','assets/ui/frame-12.png',
-        'assets/ui/frame-13.png','assets/ui/frame-14.png','assets/ui/frame-15.png','assets/ui/frame-16.png',
-        'assets/ui/frame-17.png','assets/ui/frame-18.png',
+        'assets/ui/frame-1.webp','assets/ui/frame-2.webp','assets/ui/frame-3.webp','assets/ui/frame-4.webp',
+        'assets/ui/frame-5.webp','assets/ui/frame-6.webp','assets/ui/frame-7.webp','assets/ui/frame-8.webp',
+        'assets/ui/frame-9.webp','assets/ui/frame-10.webp','assets/ui/frame-11.webp','assets/ui/frame-12.webp',
+        'assets/ui/frame-13.webp','assets/ui/frame-14.webp','assets/ui/frame-15.webp','assets/ui/frame-16.webp',
+        'assets/ui/frame-17.webp','assets/ui/frame-18.webp',
       ],
       ux: [
-        'assets/ux/ux-1.png','assets/ux/ux-2.png','assets/ux/ux-3.png','assets/ux/ux-4.png','assets/ux/ux-5.png',
+        'assets/ux/ux-1.webp','assets/ux/ux-2.webp','assets/ux/ux-3.webp','assets/ux/ux-4.webp','assets/ux/ux-5.webp',
       ],
       vibe: [
-        'assets/vibe/vibe-0.png','assets/vibe/vibe-1.png','assets/vibe/vibe-2.png','assets/vibe/vibe-3.png',
-        'assets/vibe/vibe-4.png','assets/vibe/vibe-5.png','assets/vibe/vibe-6.png','assets/vibe/vibe-7.png',
-        'assets/vibe/vibe-8.png','assets/vibe/vibe-9.png','assets/vibe/vibe-10.png','assets/vibe/vibe-11.png',
-        'assets/vibe/vibe-12.png','assets/vibe/vibe-13.png',
+        'assets/vibe/vibe-0.webp','assets/vibe/vibe-1.webp','assets/vibe/vibe-2.webp','assets/vibe/vibe-3.webp',
+        'assets/vibe/vibe-4.webp','assets/vibe/vibe-5.webp','assets/vibe/vibe-6.webp','assets/vibe/vibe-7.webp',
+        'assets/vibe/vibe-8.webp','assets/vibe/vibe-9.webp','assets/vibe/vibe-10.webp','assets/vibe/vibe-11.webp',
+        'assets/vibe/vibe-12.webp','assets/vibe/vibe-13.webp',
       ],
     }
     function openDriftWall(source) {
@@ -368,8 +368,10 @@
   const pdfModal = document.getElementById('pdfModal')
   const pdfFrame = document.getElementById('pdfFrame')
   const pdfClose = document.getElementById('pdfModalClose')
+  const pdfLoading = document.getElementById('pdfLoading')
   if (pdfModal && pdfFrame) {
     function openPdf(href) {
+      pdfLoading && pdfLoading.classList.add('is-loading')   // 显示加载提示
       pdfFrame.src = href
       pdfModal.classList.add('is-open')
       pdfModal.setAttribute('aria-hidden', 'false')
@@ -379,8 +381,11 @@
       pdfModal.classList.remove('is-open')
       pdfModal.setAttribute('aria-hidden', 'true')
       pdfFrame.src = ''
+      pdfLoading && pdfLoading.classList.remove('is-loading')
       document.dispatchEvent(new CustomEvent('menuclose'))
     }
+    // PDF 加载完成 → 隐藏加载提示
+    if (pdfLoading) pdfFrame.addEventListener('load', () => pdfLoading.classList.remove('is-loading'))
     document.querySelectorAll('[data-pdf-preview]').forEach((a) => {
       a.addEventListener('click', (e) => {
         e.preventDefault()

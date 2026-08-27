@@ -1419,6 +1419,36 @@ a.contact-row:hover {
     0 0 60px rgba(255, 217, 0, 0.12);     /* 黄色光晕 */
 }
 
+/* PDF 加载提示 */
+.pdf-loading {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: var(--black);
+  z-index: 5;
+}
+.pdf-loading.is-loading { display: flex; }
+.pdf-loading p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+.pdf-loading-spinner {
+  width: 40px; height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  border-top-color: var(--yellow);
+  border-radius: 50%;
+  animation: pdfSpin 0.8s linear infinite;
+}
+@keyframes pdfSpin { to { transform: rotate(360deg); } }
+
 /* 顶部黄色标题栏 */
 .pdf-modal-head {
   display: flex;
