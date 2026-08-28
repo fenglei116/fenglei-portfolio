@@ -1001,7 +1001,9 @@ img { display: block; max-width: 100%; }
   position: fixed;
   inset: 0;
   z-index: 2380;
-  background: rgba(3, 4, 10, 0.92);
+  background:
+    radial-gradient(90% 60% at 50% 0%, rgba(45, 123, 248, 0.12) 0%, transparent 60%),
+    rgba(3, 4, 10, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   display: none;
@@ -1011,11 +1013,11 @@ img { display: block; max-width: 100%; }
 }
 .resume-modal.is-open { display: flex; }
 .resume-modal.is-open .resume-stage {
-  animation: resumePop 0.5s var(--ease-out) forwards;
+  animation: resumePop 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 @keyframes resumePop {
-  from { opacity: 0; transform: scale(0.94) translateY(20px); }
-  to   { opacity: 1; transform: scale(1) translateY(0); }
+  from { opacity: 0; transform: scale(0.92) translateY(24px); filter: blur(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
 }
 .resume-modal-close {
   position: absolute;
@@ -1051,9 +1053,24 @@ img { display: block; max-width: 100%; }
   height: auto;
   object-fit: contain;
   background: #fff;
-  transition: opacity 0.25s ease;
+  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease, filter 0.3s ease;
 }
-.resume-img.is-fading { opacity: 0; }
+/* 旧图滑出 */
+.resume-img.is-leaving.is-left  { transform: translateX(-64px) rotate(-2deg); opacity: 0; filter: blur(4px); }
+.resume-img.is-leaving.is-right { transform: translateX(64px) rotate(2deg); opacity: 0; filter: blur(4px); }
+/* 新图滑入 */
+.resume-img.is-entering-left  { animation: resumeInLeft 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.resume-img.is-entering-right { animation: resumeInRight 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+@keyframes resumeInLeft {
+  from { transform: translateX(-64px) rotate(2deg); opacity: 0; filter: blur(4px); }
+  to   { transform: translateX(0) rotate(0); opacity: 1; filter: blur(0); }
+}
+@keyframes resumeInRight {
+  from { transform: translateX(64px) rotate(-2deg); opacity: 0; filter: blur(4px); }
+  to   { transform: translateX(0) rotate(0); opacity: 1; filter: blur(0); }
+}
+/* hover 轻微浮起 */
+.resume-img:hover { transform: scale(1.015); }
 .resume-controls {
   position: absolute;
   bottom: 6vh;
@@ -1079,7 +1096,7 @@ img { display: block; max-width: 100%; }
   cursor: pointer;
   transition: background 0.25s, transform 0.2s, border-color 0.25s;
 }
-.resume-nav:hover:not(:disabled) { background: var(--blue); border-color: var(--blue); transform: scale(1.08); }
+.resume-nav:hover:not(:disabled) { background: var(--blue); border-color: var(--blue); transform: scale(1.08); box-shadow: 0 0 18px rgba(45, 123, 248, 0.5); }
 .resume-nav:disabled { opacity: 0.3; cursor: default; }
 .resume-info {
   font-family: var(--font-display);

@@ -172,15 +172,29 @@
   let resumePage = 1
   function showResumePage(n) {
     n = Math.max(1, Math.min(n, RESUME_PAGES.length))
+    const dir = n > resumePage ? 'next' : n < resumePage ? 'prev' : null
     resumePage = n
-    resumeImg.classList.add('is-fading')
-    setTimeout(() => {
+    if (dir) {
+      // 旧图滑出（方向决定滑向哪边）
+      resumeImg.classList.add('is-leaving')
+      resumeImg.classList.toggle('is-left', dir === 'next')
+      resumeImg.classList.toggle('is-right', dir === 'prev')
+      setTimeout(() => {
+        resumeImg.src = RESUME_PAGES[n - 1]
+        resumeImg.classList.remove('is-leaving', 'is-left', 'is-right')
+        // 新图滑入（反向）
+        resumeImg.classList.add(dir === 'next' ? 'is-entering-left' : 'is-entering-right')
+        resumeImg.addEventListener('animationend', function h() {
+          resumeImg.classList.remove('is-entering-left', 'is-entering-right')
+          resumeImg.removeEventListener('animationend', h)
+        })
+        resumeInfo.textContent = n + ' / ' + RESUME_PAGES.length
+        resumePrev.disabled = n <= 1
+        resumeNext.disabled = n >= RESUME_PAGES.length
+      }, 200)
+    } else {
       resumeImg.src = RESUME_PAGES[n - 1]
-      resumeInfo.textContent = n + ' / ' + RESUME_PAGES.length
-      resumePrev.disabled = n <= 1
-      resumeNext.disabled = n >= RESUME_PAGES.length
-      resumeImg.classList.remove('is-fading')
-    }, 180)
+    }
   }
   function openResume() {
     resumeModal.classList.add('is-open')
