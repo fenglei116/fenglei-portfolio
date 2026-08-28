@@ -158,6 +158,61 @@
     })
   }
 
+/* ---------- 简历弹窗（About "查看简历" 触发） ---------- */
+  const resumeModal = document.getElementById('resumeModal')
+  const resumeClose = document.getElementById('resumeModalClose')
+  const resumeImg = document.getElementById('resumeImg')
+  const resumePrev = document.getElementById('resumePrev')
+  const resumeNext = document.getElementById('resumeNext')
+  const resumeInfo = document.getElementById('resumeInfo')
+  const RESUME_PAGES = [
+    'assets/resume/r-1.webp',
+    'assets/resume/r-2.webp',
+  ]
+  let resumePage = 1
+  function showResumePage(n) {
+    n = Math.max(1, Math.min(n, RESUME_PAGES.length))
+    resumePage = n
+    resumeImg.classList.add('is-fading')
+    setTimeout(() => {
+      resumeImg.src = RESUME_PAGES[n - 1]
+      resumeInfo.textContent = n + ' / ' + RESUME_PAGES.length
+      resumePrev.disabled = n <= 1
+      resumeNext.disabled = n >= RESUME_PAGES.length
+      resumeImg.classList.remove('is-fading')
+    }, 180)
+  }
+  function openResume() {
+    resumeModal.classList.add('is-open')
+    resumeModal.setAttribute('aria-hidden', 'false')
+    showResumePage(1)
+    document.dispatchEvent(new CustomEvent('menuopen'))
+  }
+  function closeResume() {
+    resumeModal.classList.remove('is-open')
+    resumeModal.setAttribute('aria-hidden', 'true')
+    document.dispatchEvent(new CustomEvent('menuclose'))
+  }
+  document.querySelectorAll('[data-resume-link]').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault()
+      openResume()
+    })
+  })
+  if (resumeClose) resumeClose.addEventListener('click', closeResume)
+  if (resumePrev) resumePrev.addEventListener('click', () => showResumePage(resumePage - 1))
+  if (resumeNext) resumeNext.addEventListener('click', () => showResumePage(resumePage + 1))
+  if (resumeModal) resumeModal.addEventListener('click', (e) => {
+    if (e.target === resumeModal) closeResume()
+  })
+  document.addEventListener('keydown', (e) => {
+    if (resumeModal && resumeModal.classList.contains('is-open')) {
+      if (e.key === 'Escape') closeResume()
+      if (e.key === 'ArrowLeft') showResumePage(resumePage - 1)
+      if (e.key === 'ArrowRight') showResumePage(resumePage + 1)
+    }
+  })
+
   /* ---------- Contact 弹窗（Footer GO 触发） ---------- */
   const contactModal = document.getElementById('contactModal')
   const contactClose = document.getElementById('contactModalClose')

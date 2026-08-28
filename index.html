@@ -131,8 +131,8 @@
             <p class="about-page-text">
               拥有一套项目改版设计，一套运营活动设计。
             </p>
-            <a href="#footer" class="button-interactive" data-cursor="view" data-scroll-to-footer data-specular>
-              LET'S TALK
+            <a href="#" class="button-interactive" data-cursor="view" data-resume-link data-specular>
+              查看简历
               <span class="btn-arrow">→</span>
             </a>
           </div>
@@ -271,6 +271,19 @@
       <div class="pdf-viewer" id="pdfViewer">
         <img id="pdfImg" alt="案例预览页" />
       </div>
+    </div>
+  </div>
+
+  <!-- 简历弹窗（About "查看简历" 触发） -->
+  <div class="resume-modal" id="resumeModal" aria-hidden="true">
+    <button class="resume-modal-close" id="resumeModalClose" aria-label="关闭" data-cursor="view">✕</button>
+    <div class="resume-stage">
+      <img class="resume-img" id="resumeImg" src="" alt="个人简历" />
+    </div>
+    <div class="resume-controls">
+      <button class="resume-nav" id="resumePrev" aria-label="上一张" data-cursor="view">‹</button>
+      <span class="resume-info" id="resumeInfo">1 / 2</span>
+      <button class="resume-nav" id="resumeNext" aria-label="下一张" data-cursor="view">›</button>
     </div>
   </div>
 
@@ -428,6 +441,6 @@
   <script src="vendor/gsap.min.js"></script>
   <script src="vendor/ScrollTrigger.min.js"></script>
   <script src="vendor/lenis.min.js"></script>
-  <script src="script.js?v=20260828-1058"></script>
+  <script src="script.js?v=20260828-2040"></script>
 </body>
 </html>
