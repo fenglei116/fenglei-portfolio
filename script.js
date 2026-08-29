@@ -443,7 +443,7 @@
   const pdfPageInfo = document.getElementById('pdfPageInfo')
   // PDF → 页面 WebP 图片序列映射（每页懒加载，秒开）
   const PDF_IMAGES = {
-    'assets/project-1-case.pdf': { prefix: 'p1', pages: 24 },
+    'assets/project-1-case.pdf': { prefix: 'p1', pages: 23 },
     'assets/project-2-case.pdf': { prefix: 'p2', pages: 16 },
   }
   let pdfMeta = null
