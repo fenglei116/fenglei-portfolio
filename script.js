@@ -443,9 +443,10 @@
   const pdfPageInfo = document.getElementById('pdfPageInfo')
   // PDF → 页面 WebP 图片序列映射（每页懒加载，秒开）
   const PDF_IMAGES = {
-    'assets/project-1-case.pdf': { prefix: 'p1', pages: 23 },
+    'assets/project-1-case.pdf': { prefix: 'p1', pages: 20 },
     'assets/project-2-case.pdf': { prefix: 'p2', pages: 16 },
   }
+  const PDF_ASSET_VERSION = '20260921-2150'
   let pdfMeta = null
   let pdfPageNum = 1
 
@@ -453,7 +454,7 @@
     if (!pdfMeta) return
     n = Math.max(1, Math.min(n, pdfMeta.pages))
     pdfPageNum = n
-    pdfImg.src = 'assets/pdf/' + pdfMeta.prefix + '-' + String(n).padStart(2, '0') + '.webp'
+    pdfImg.src = 'assets/pdf/' + pdfMeta.prefix + '-' + String(n).padStart(2, '0') + '.webp?v=' + PDF_ASSET_VERSION
     pdfImg.alt = '案例第 ' + n + ' 页'
     pdfPageInfo.textContent = n + ' / ' + pdfMeta.pages
     pdfPrev.disabled = n <= 1
