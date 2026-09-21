@@ -444,9 +444,9 @@
   // PDF → 页面 WebP 图片序列映射（每页懒加载，秒开）
   const PDF_IMAGES = {
     'assets/project-1-case.pdf': { prefix: 'p1', pages: 20 },
-    'assets/project-2-case.pdf': { prefix: 'p2', pages: 16 },
+    'assets/project-2-case.pdf': { prefix: 'p2', pages: 14 },
   }
-  const PDF_ASSET_VERSION = '20260921-2150'
+  const PDF_ASSET_VERSION = '20260921-2157'
   let pdfMeta = null
   let pdfPageNum = 1
 
