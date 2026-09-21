@@ -879,6 +879,23 @@ img { display: block; max-width: 100%; }
   max-width: 1400px; margin: 0 auto;
   display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
 }
+
+/* 作品集汇总按钮（works 区底部居中） */
+.works-summary {
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+}
+.works-summary-btn {
+  margin-top: 0;
+  padding: 14px 24px;
+  font-size: 17px;
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--blue-deep);
+  border-color: var(--white);
+}
+.works-summary-btn .btn-arrow { width: 32px; height: 32px; font-size: 15px; }
 .work-card { display: block; }
 .work-card:nth-child(2) { margin-top: 90px; }
 /* PROJECT 02 封面：稍微提高饱和度让海报色更鲜艳 */

@@ -443,10 +443,11 @@
   const pdfPageInfo = document.getElementById('pdfPageInfo')
   // PDF → 页面 WebP 图片序列映射（每页懒加载，秒开）
   const PDF_IMAGES = {
-    'assets/project-1-case.pdf': { prefix: 'p1', pages: 20 },
-    'assets/project-2-case.pdf': { prefix: 'p2', pages: 14 },
+    'assets/project-1-case.pdf': { prefix: 'p1', pages: 20, title: 'PROJECT 01 ✱ 视觉方案' },
+    'assets/project-2-case.pdf': { prefix: 'p2', pages: 14, title: 'PROJECT 02 ✱ UI 方案' },
+    'assets/project-3-case.pdf': { prefix: 'p3', pages: 37, title: 'PORTFOLIO ✱ 作品集汇总' },
   }
-  const PDF_ASSET_VERSION = '20260921-2157'
+  const PDF_ASSET_VERSION = '20260921-2204'
   let pdfMeta = null
   let pdfPageNum = 1
 
@@ -473,6 +474,8 @@
     }
     pdfModal.classList.add('is-open')
     pdfModal.setAttribute('aria-hidden', 'false')
+    const pdfTitle = document.getElementById('pdfTitle')
+    if (pdfTitle && pdfMeta.title) pdfTitle.textContent = pdfMeta.title
     document.dispatchEvent(new CustomEvent('menuopen')) // 锁背景滚动
     showPdfPage(1)
   }
