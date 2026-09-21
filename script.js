@@ -110,7 +110,7 @@
         'assets/ui/frame-5.webp','assets/ui/frame-6.webp','assets/ui/frame-7.webp','assets/ui/frame-8.webp',
         'assets/ui/frame-9.webp','assets/ui/frame-10.webp','assets/ui/frame-11.webp','assets/ui/frame-12.webp',
         'assets/ui/frame-13.webp','assets/ui/frame-14.webp','assets/ui/frame-15.webp','assets/ui/frame-16.webp',
-        'assets/ui/frame-17.webp','assets/ui/frame-18.webp',
+        'assets/ui/frame-17.webp','assets/ui/frame-18.webp','assets/ui/frame-19.webp',
       ],
       ux: [
         'assets/ux/ux-1.webp','assets/ux/ux-2.webp','assets/ux/ux-3.webp','assets/ux/ux-4.webp','assets/ux/ux-5.webp',
