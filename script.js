@@ -166,8 +166,8 @@
   const resumeNext = document.getElementById('resumeNext')
   const resumeInfo = document.getElementById('resumeInfo')
   const RESUME_PAGES = [
-    'assets/resume/r-1.webp',
-    'assets/resume/r-2.webp',
+    'assets/resume/r-1.webp?v=20260921-2130',
+    'assets/resume/r-2.webp?v=20260921-2130',
   ]
   let resumePage = 1
   function showResumePage(n) {
