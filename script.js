@@ -106,11 +106,11 @@
   if (driftModal && driftWall) {
     const driftItems = {
       ui: [
-        'assets/ui/frame-1.webp','assets/ui/frame-2.webp','assets/ui/frame-3.webp','assets/ui/frame-4.webp',
-        'assets/ui/frame-5.webp','assets/ui/frame-6.webp','assets/ui/frame-7.webp','assets/ui/frame-8.webp',
-        'assets/ui/frame-9.webp','assets/ui/frame-10.webp','assets/ui/frame-11.webp','assets/ui/frame-12.webp',
-        'assets/ui/frame-13.webp','assets/ui/frame-14.webp','assets/ui/frame-15.webp','assets/ui/frame-16.webp',
-        'assets/ui/frame-17.webp','assets/ui/frame-18.webp','assets/ui/frame-19.webp',
+        'assets/ui/frame-1.webp?v=20260921-2225','assets/ui/frame-2.webp?v=20260921-2225','assets/ui/frame-3.webp?v=20260921-2225','assets/ui/frame-4.webp?v=20260921-2225',
+        'assets/ui/frame-5.webp?v=20260921-2225','assets/ui/frame-6.webp?v=20260921-2225','assets/ui/frame-7.webp?v=20260921-2225','assets/ui/frame-8.webp?v=20260921-2225',
+        'assets/ui/frame-9.webp?v=20260921-2225','assets/ui/frame-10.webp?v=20260921-2225','assets/ui/frame-11.webp?v=20260921-2225','assets/ui/frame-12.webp?v=20260921-2225',
+        'assets/ui/frame-13.webp?v=20260921-2225','assets/ui/frame-14.webp?v=20260921-2225','assets/ui/frame-15.webp?v=20260921-2225','assets/ui/frame-16.webp?v=20260921-2225',
+        'assets/ui/frame-17.webp?v=20260921-2225','assets/ui/frame-18.webp?v=20260921-2225','assets/ui/frame-19.webp?v=20260921-2225',
       ],
       ux: [
         'assets/ux/ux-1.webp','assets/ux/ux-2.webp','assets/ux/ux-3.webp','assets/ux/ux-4.webp','assets/ux/ux-5.webp',
