@@ -166,8 +166,8 @@
   const resumeNext = document.getElementById('resumeNext')
   const resumeInfo = document.getElementById('resumeInfo')
   const RESUME_PAGES = [
-    'assets/resume/r-1.webp?v=20260921-2130',
-    'assets/resume/r-2.webp?v=20260921-2130',
+    'assets/resume/r-1.webp?v=20260922-2215',
+    'assets/resume/r-2.webp?v=20260922-2215',
   ]
   let resumePage = 1
   function showResumePage(n) {
@@ -447,7 +447,7 @@
     'assets/project-2-case.pdf': { prefix: 'p2', pages: 14, title: 'PROJECT 02 ✱ UI 方案' },
     'assets/project-3-case.pdf': { prefix: 'p3', pages: 37, title: 'PORTFOLIO ✱ 作品集汇总' },
   }
-  const PDF_ASSET_VERSION = '20260922-2210'
+  const PDF_ASSET_VERSION = '20260922-2215'
   let pdfMeta = null
   let pdfPageNum = 1
 
