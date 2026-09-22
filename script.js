@@ -447,7 +447,7 @@
     'assets/project-2-case.pdf': { prefix: 'p2', pages: 14, title: 'PROJECT 02 ✱ UI 方案' },
     'assets/project-3-case.pdf': { prefix: 'p3', pages: 37, title: 'PORTFOLIO ✱ 作品集汇总' },
   }
-  const PDF_ASSET_VERSION = '20260921-2204'
+  const PDF_ASSET_VERSION = '20260922-2210'
   let pdfMeta = null
   let pdfPageNum = 1
 
