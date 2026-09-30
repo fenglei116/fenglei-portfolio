@@ -445,9 +445,9 @@
   const PDF_IMAGES = {
     'assets/project-1-case.pdf': { prefix: 'p1', pages: 20, title: 'PROJECT 01 ✱ 视觉方案' },
     'assets/project-2-case.pdf': { prefix: 'p2', pages: 15, title: 'PROJECT 02 ✱ UI 方案' },
-    'assets/project-3-case.pdf': { prefix: 'p3', pages: 37, title: 'PORTFOLIO ✱ 作品集汇总' },
+    'assets/project-3-case.pdf': { prefix: 'p3', pages: 38, title: 'PORTFOLIO ✱ 作品集汇总' },
   }
-  const PDF_ASSET_VERSION = '20260930-2030'
+  const PDF_ASSET_VERSION = '20260930-2035'
   let pdfMeta = null
   let pdfPageNum = 1
 
